@@ -9,7 +9,6 @@ public class MainApp {
 			public void run() {
 				try {
 					View frame = new View();
-					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
