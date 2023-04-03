@@ -8,6 +8,8 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import java.awt.FlowLayout;
+import java.awt.BorderLayout;
 
 public class View extends JFrame {
 
@@ -24,11 +26,10 @@ public class View extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));		
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		contentPane.setLayout(new BorderLayout(0, 0));
 		JLabel etiqueta = new JLabel("Etiqueta Custom");
-		etiqueta.setBounds(134, 50, 147, 30);
-		etiqueta.setFont(new Font("Tahoma", Font.BOLD, 13));
 		etiqueta.setHorizontalAlignment(SwingConstants.CENTER);
+		etiqueta.setFont(new Font("Tahoma", Font.BOLD, 13));
 		contentPane.add(etiqueta);
 		setResizable(true);
 		setVisible(true);

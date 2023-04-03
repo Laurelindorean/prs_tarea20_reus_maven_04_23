@@ -1,4 +1,4 @@
-package bootcamp.U20.ejercicio1;
+package bootcamp.U20.ejercicio2;
 
 import java.awt.EventQueue;
 
@@ -7,7 +7,8 @@ public class MainApp {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					View frame = new View();			
+					View frame = new View();
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
