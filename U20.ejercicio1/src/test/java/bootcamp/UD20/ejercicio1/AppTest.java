@@ -1,4 +1,4 @@
-package bootcamp.U20.ejercicio1;
+package bootcamp.UD20.ejercicio1;
 
 import static org.junit.Assert.assertTrue;
 

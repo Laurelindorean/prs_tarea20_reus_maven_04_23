@@ -1,4 +1,4 @@
-package bootcamp.U20.ejercicio2;
+package bootcamp.UD20.ejercicio2;
 
 import java.awt.EventQueue;
 
