@@ -1,25 +1,22 @@
-package bootcamp.UD20.ejercicio7;
+package bootcamp.UD20.ejercicio8;
 
 import java.awt.Color;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
+import java.awt.EventQueue;
 import java.awt.Font;
-import javax.swing.SwingConstants;
-import javax.swing.JTextField;
-import javax.swing.border.LineBorder;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
 public class View extends JFrame {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textMoneda;
 	private JButton btnMoneda;
@@ -29,10 +26,8 @@ public class View extends JFrame {
 	private double pesetas;
 	private double euros;
 	private JLabel lblResultado;
+	private JButton btnBorrar;
 
-	/**
-	 * Create the frame.
-	 */
 	public View() {
 		setTitle("Calculadora cambio de monedas");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -72,15 +67,20 @@ public class View extends JFrame {
 		btnPtasAEuros = new JButton("Ptas a Euros");
 		btnPtasAEuros.addActionListener(evento);
 		btnPtasAEuros.setVisible(false);
-		btnPtasAEuros.setBounds(87, 94, 115, 23);
+		btnPtasAEuros.setBounds(59, 94, 115, 23);
 		contentPane.add(btnPtasAEuros);
-		btnMoneda.setBounds(87, 94, 115, 23);
+		btnMoneda.setBounds(59, 94, 115, 23);
 		contentPane.add(btnMoneda);
 
 		btnCambio = new JButton("Cambiar");
 		btnCambio.addActionListener(evento);
-		btnCambio.setBounds(244, 94, 89, 23);
+		btnCambio.setBounds(184, 94, 89, 23);
 		contentPane.add(btnCambio);
+		
+		btnBorrar = new JButton("Borrar");
+		btnBorrar.addActionListener(evento);
+		btnBorrar.setBounds(283, 94, 89, 23);
+		contentPane.add(btnBorrar);
 	}
 
 	ActionListener evento = new ActionListener() {
@@ -106,7 +106,12 @@ public class View extends JFrame {
 				pesetas = Double.parseDouble(textMoneda.getText()) * 0.0060;
 				lblFinal.setText(String.valueOf(pesetas));
 			}
+			if(e.getSource() == btnBorrar) {
+				textMoneda.setText("");
+				lblFinal.setText("");
+			}
 		}
 	};
+	
 
 }
