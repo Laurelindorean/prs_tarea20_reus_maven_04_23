@@ -5,10 +5,12 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -16,7 +18,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 public class View extends JFrame {
-
+	
+	private static final double CAMBIO_EUROS = 166.386;
+	private static final double CAMBIO_PTAS = 0.00601;
 	private JPanel contentPane;
 	private JTextField textMoneda;
 	private JButton btnMoneda;
@@ -27,6 +31,7 @@ public class View extends JFrame {
 	private double euros;
 	private JLabel lblResultado;
 	private JButton btnBorrar;
+	private double dinero;
 
 	public View() {
 		setTitle("Calculadora cambio de monedas");
@@ -62,9 +67,13 @@ public class View extends JFrame {
 		contentPane.add(lblFinal);
 
 		btnMoneda = new JButton("Euros a Ptas");
+		//aparecera subrayada la letra E y si pulsamos alt+E se seleccinará y pulsará el boton
+		btnMoneda.setMnemonic(KeyEvent.VK_E);
 		btnMoneda.addActionListener(evento);
 
 		btnPtasAEuros = new JButton("Ptas a Euros");
+		//aparecera subrayada la letra P y si pulsamos alt+P se seleccinará y pulsará el boton
+		btnPtasAEuros.setMnemonic(KeyEvent.VK_P);
 		btnPtasAEuros.addActionListener(evento);
 		btnPtasAEuros.setVisible(false);
 		btnPtasAEuros.setBounds(59, 94, 115, 23);
@@ -73,11 +82,15 @@ public class View extends JFrame {
 		contentPane.add(btnMoneda);
 
 		btnCambio = new JButton("Cambiar");
+		//aparecera subrayada la letra C y si pulsamos alt+C se seleccinará y pulsará el boton
+		btnCambio.setMnemonic(KeyEvent.VK_C);
 		btnCambio.addActionListener(evento);
 		btnCambio.setBounds(184, 94, 89, 23);
 		contentPane.add(btnCambio);
 		
 		btnBorrar = new JButton("Borrar");
+		//aparecera subrayada la letra B y si pulsamos alt+B se seleccinará y pulsará el boton
+		btnBorrar.setMnemonic(KeyEvent.VK_B);
 		btnBorrar.addActionListener(evento);
 		btnBorrar.setBounds(283, 94, 89, 23);
 		contentPane.add(btnBorrar);
@@ -96,16 +109,28 @@ public class View extends JFrame {
 				}
 			}
 			// Calculamos el cambio de Euros a Pesetas
+			try {
+				dinero = Double.parseDouble(textMoneda.getText());
+			}catch(NumberFormatException ex) {
+				JOptionPane.showMessageDialog(View.this, "Solo se pueden números enteros o decimales","Error", JOptionPane.ERROR_MESSAGE);
+			}finally {
+				//Si salta el error queremos que se borren los datos
+				textMoneda.setText("0.0");
+				lblFinal.setText("0.0");
+			}
+			
 			if (e.getSource() == btnMoneda) {
-				euros = Double.parseDouble(textMoneda.getText()) * 166.386;
+				euros = dinero * CAMBIO_EUROS;
 				double eurosRound = Math.round(euros * 100.0) / 100.0;
 				lblFinal.setText(String.valueOf(eurosRound));
 			}
 			// Calculamos el cambio de Pesetas a Euros
 			if (e.getSource() == btnPtasAEuros) {
-				pesetas = Double.parseDouble(textMoneda.getText()) * 0.0060;
-				lblFinal.setText(String.valueOf(pesetas));
+				pesetas = dinero * CAMBIO_PTAS;
+				double ptasRound = Math.round(pesetas * 100.0) / 100.0;
+				lblFinal.setText(String.valueOf(ptasRound));
 			}
+			//Si pulsamos el boton borrar reseteamos los valores
 			if(e.getSource() == btnBorrar) {
 				textMoneda.setText("");
 				lblFinal.setText("");

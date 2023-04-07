@@ -20,6 +20,9 @@ public class View extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private static final double CAMBIO_EUROS = 166.386;
+	private static final double CAMBIO_PTAS = 0.00601;
+	
 	private JPanel contentPane;
 	private JTextField textMoneda;
 	private JButton btnMoneda;
@@ -97,14 +100,15 @@ public class View extends JFrame {
 			}
 			// Calculamos el cambio de Euros a Pesetas
 			if (e.getSource() == btnMoneda) {
-				euros = Double.parseDouble(textMoneda.getText()) * 166.386;
+				euros = Double.parseDouble(textMoneda.getText()) * CAMBIO_EUROS;
 				double eurosRound = Math.round(euros * 100.0) / 100.0;
 				lblFinal.setText(String.valueOf(eurosRound));
 			}
 			// Calculamos el cambio de Pesetas a Euros
 			if (e.getSource() == btnPtasAEuros) {
-				pesetas = Double.parseDouble(textMoneda.getText()) * 0.0060;
-				lblFinal.setText(String.valueOf(pesetas));
+				pesetas = Double.parseDouble(textMoneda.getText()) * CAMBIO_PTAS;
+				double ptasRound = Math.round(pesetas * 100.0) / 100.0;
+				lblFinal.setText(String.valueOf(ptasRound));
 			}
 		}
 	};
