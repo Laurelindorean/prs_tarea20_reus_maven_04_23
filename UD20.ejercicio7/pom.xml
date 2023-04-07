@@ -5,10 +5,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>bootcamp</groupId>
-  <artifactId>UD20.ejercicio6</artifactId>
-  <version>0.0.1</version>
+  <artifactId>UD20.ejercicio7</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
 
-  <name>UD20.ejercicio6</name>
+  <name>UD20.ejercicio7</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
